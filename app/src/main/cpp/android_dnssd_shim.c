@@ -187,6 +187,8 @@ dnssd_register_airplay(dnssd_t *dnssd, unsigned short port)
         _txt_set(rec, "pk", dnssd->pk);
     }
     _txt_set(rec, "pi", AIRPLAY_PI);
+    /* macOS 27 ignores receivers without psi ("Ignoring device found without pairing ID") */
+    _txt_set(rec, "psi", AIRPLAY_PI);
     _txt_set(rec, "srcvers", AIRPLAY_SRCVERS);
     _txt_set(rec, "vv", AIRPLAY_VV);
     return 0;
